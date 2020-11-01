@@ -2,17 +2,17 @@ from decimal import *
 import functools as fn
 
 def newton (x, Xs, Ys):
-    F = diferencasDivididas(Xs, Ys)
-    ptos = []
+    F = divided_differences(Xs, Ys)
+    points = []
     for v in x:
         p = F[0]
         for i in range(1, len(F)):
             p += Decimal(F[i] * fn.reduce(lambda a,b: a*b, [v-xi for xi in Xs[0:i]]))
-        ptos.append(p)
-    return ptos
+        points.append(p)
+    return points
 
 
-def diferencasDivididas(Xs, Ys):
+def divided_differences(Xs, Ys):
     M = []
     M.append([[]])
     for i in range (1, len(Xs)+1):
